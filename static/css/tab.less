@@ -1,0 +1,50 @@
+.finance-tab {
+    .tab {
+        box-sizing: border-box;
+
+        display: inline-block;
+        padding: 0 20px;
+        margin-left: 15px;
+        height: 32px;
+        
+        line-height: 32px;
+        font-size: 14px;
+        color: #8391a5;
+
+        &:hover {
+            color: #118bff;
+        }
+
+        & + .tab {
+            margin-left: 40px;
+        }
+
+        &.active {
+            position: relative;
+            color: #118bff;
+
+            &::after {
+                content: "";
+
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+
+                height: 3px;
+                width: 100%;
+
+                background-color: #1188ff;
+
+                border-radius: 2px;
+            }
+        }
+    }
+}
+
+.finance-separate {
+    position: relative;
+    width: 102%;
+    margin: 3px 0px 30px -20px;
+    
+    border-bottom: 1px solid #e5e5e5;
+}

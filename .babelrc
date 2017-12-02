@@ -1,0 +1,13 @@
+{
+    "presets": [
+      "es2015",
+      "stage-3"
+    ],
+    "env": {
+      "development": {
+        "presets": ["babel-preset-stage-3"]
+      }
+    },
+    "plugins": ["transform-runtime", "transform-vue-jsx"]
+  }
+  

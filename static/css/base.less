@@ -1,0 +1,64 @@
+@import './reset.less';
+
+html {
+    height: 100%;
+}
+body {
+    background-color: #F7F8FC;
+    min-height: 100%;
+    font-family: PingFangSC-Regular,PingFangSC,"Helvetica Neue","Hiragino Sans GB","Arial","Microsoft YaHei","sans-serif" !important;
+}
+
+#app {
+    height: 100%;
+    min-height: 100%;
+    .content {
+        padding-top: 50px;
+       
+    }
+    .nav {
+        float: left;
+        width: 180px;
+        position: fixed;
+        left: 0;
+        top: 50px;
+        bottom: 0;
+        background:#2c354c;
+    }
+    .product{
+        padding-right: 20px;
+        width: auto;
+        overflow: auto;
+        padding-left: 200px;
+    }
+    &.arrearage {
+        .content {
+            padding-top: 80px;
+        }
+        .nav {
+            top: 80px;
+        }
+        .header-block {
+            height: 80px;
+        }
+    }
+   .container, .content{
+        height: 100%;
+        min-height: 100%;
+    }
+
+    .btn-box{
+        
+    }
+
+    .ace-tomorrow-night-bright .ace_gutter, .ace-tomorrow-night-bright{
+        background-color: #21283C;
+    }
+    .ace-tomorrow-night-bright .ace_print-margin{
+        display: none;
+    }
+    .ace-tomorrow-night-bright .ace_marker-layer .ace_active-line{
+        background: #3A4560;
+    }
+    
+}
