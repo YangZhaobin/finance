@@ -1,0 +1,36 @@
+{
+  "name": "yang_b",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=production ./node_modules/.bin/nodemon ./index.js",
+    "dev": "cross-env NODE_ENV=development ./node_modules/.bin/nodemon ./index.js",
+    "test": "cross-env NODE_ENV=test ./node_modules/.bin/nodemon ./index.js"
+  },
+  "author": "yangzhaobin <yangzb0922@163.com>",
+  "dependencies": {
+    "debug": "^2.6.3",
+    "iconv-lite": "^0.4.19",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^2.0.1",
+    "koa-onerror": "^1.2.1",
+    "koa-router": "^7.1.1",
+    "koa-static": "^3.0.0",
+    "koa-views": "^5.2.1",
+    "later": "^1.2.0",
+    "moment": "^2.19.2",
+    "sequelize": "^4.23.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "cross-env": "^3.1.4"
+  }
+}
