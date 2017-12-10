@@ -12,7 +12,7 @@ import App from './App.vue';
 
 import routes from './router/index';
 import axios from 'axios';
-import '../css/base.less';
+import '@css/base.less';
 
 Vue.prototype.axios = axios;
 Vue.use(VueRouter);

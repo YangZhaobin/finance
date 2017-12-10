@@ -24,7 +24,7 @@
     </div>
 </template>
 <script>
-    require('../../../../css/tab.less');
+    require('@css/tab.less');
 
     import PeopleTable from './PeopleTable.vue';
 

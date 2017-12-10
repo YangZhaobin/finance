@@ -20,7 +20,7 @@
     </div>
 </template>
 <script>
-    require('../../css/tab.less');
+    require('@css/tab.less');
     export default {
         data: function() {
             return {

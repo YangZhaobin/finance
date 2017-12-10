@@ -39,8 +39,8 @@
     </div>
 </template>
 <script>
-    require('../../css/tab.less');
-    require('../../css/detail.less');
+    require('@css/tab.less');
+    require('@css/detail.less');
     export default {
         data: function() {
             return {
