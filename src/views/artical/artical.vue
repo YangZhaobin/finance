@@ -39,19 +39,20 @@
     </div>
 </template>
 <script>
-    require('@css/tab.less');
-    require('@css/detail.less');
-    export default {
-        data: function() {
-            return {
-                key: 'Hello World!!!!!'
-            };
-        },
-        mounted() {
-        },
-        method: {
-        }
-    };
+require('@css/tab.less');
+require('@css/detail.less');
+export default {
+    data: function() {
+        return {
+            key: 'Hello World!!!!!'
+        };
+    },
+    mounted() {
+        
+    },
+    method: {
+    }
+};
 </script>
 <style lang="less" scoped>
 
