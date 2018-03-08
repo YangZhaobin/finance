@@ -116,25 +116,25 @@ export default {
             // };
 
             this.table.tableData = [{
-                title: 'this is a title',
+                title: 'this is a title1',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title2',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title3',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title4',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title5',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title6',
                 link: 'industry'
             }, {
-                title: 'this is a title',
+                title: 'this is a title7',
                 link: 'industry'
             }];
             this.table.tableLoading = false;

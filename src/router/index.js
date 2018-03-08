@@ -23,6 +23,12 @@ const International = resolve => {
     });
 };
 
+const ArticalContent = resolve => {
+    require.ensure(['@/views/artical/artical.vue'], () => {
+        resolve(require('@/views/artical/artical.vue'));
+    });
+};
+
 const commonParent = {
     template: `<router-view></router-view>`
 };
@@ -59,6 +65,11 @@ const routes = [{
         name: 'international',
         component: International,
         meta: { nameCn: '国际', icon: 'el-icon-info', notShowNav: false }
+    },{
+        path: 'content/:id?',
+        name: 'content',
+        component: ArticalContent,
+        meta: { notShowNav: true }
     }]
 }, {
     path: '*',

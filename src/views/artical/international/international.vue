@@ -13,13 +13,14 @@
         components: { CommonTemplate },
         data() {
             return {
+                type: 'international',
                 tabList: [{
                     name: '人民网',
-                    link: 'hongguan',
+                    link: 'international',
                     from: 'people'
                 }, {
                     name: '腾讯财经',
-                    link: 'industry',
+                    link: 'international',
                     from: 'tencent'
                 }, {
                     name: '华尔街见闻',

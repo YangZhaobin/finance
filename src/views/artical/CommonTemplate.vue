@@ -10,7 +10,7 @@
                     <span v-for="tab in tabList"
                             :key="tab.name">
                         <span v-if="tab.isActive" class="tab active">{{ tab.name }}</span>
-                        <router-link v-else class="tab" :to="{ name: tab.link }">{{ tab.name }}</router-link>
+                        <router-link v-else class="tab" :to="{ name: tab.link, params: { from: tab.from }}">{{ tab.name }}</router-link>
                     </span>
                 </div>
                 <div class="finance-separate"></div>
@@ -29,6 +29,7 @@ export default {
     name: 'CommonTemplate',
     components: { ArticalTable },
     props: {
+        type: String,
         tabList: {
             type: Array,
             default: () => []
@@ -38,7 +39,7 @@ export default {
             default: () => ''
         }
     },
-    data: function() {
+    data() {
         return {
         };
     },

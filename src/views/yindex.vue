@@ -5,6 +5,9 @@
             <div class="nav">
                 <el-nav></el-nav>
             </div>
+            <li v-for="item in routeList" :key="item.id">
+                <i :class="errorClass[index]" @click="clickEvent(index)"></i>
+            </li>
             <div class="product">
                 <div class="finance-tab">
                     <span class="tab active">宏观</span>
@@ -47,12 +50,21 @@
     export default {
         data: function() {
             return {
-                key: 'Hello World!!!!!'
+                key: 'Hello World!!!!!',
+
+                errorClass: []  // 打错的时候给errorClass赋值
             };
         },
         mounted() {
+
         },
         method: {
+            clickEvent(evt, index) {
+                // 答错了
+                if (false) { 
+                    this.errorClass[index] = 'error';
+                }
+            }
         }
     };
 </script>

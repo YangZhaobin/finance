@@ -11,9 +11,9 @@ async function catchError(ctx, next) {
         ctx.state = {
             status
         };
-    await ctx.render('error/error', {});
-    if (status == 500) {
-        console.log('server error', err, ctx);
+        await ctx.render('error/error', {});
+        if (status == 500) {
+            console.log('server error', err, ctx);
+        }
     }
-}
 }

@@ -13,17 +13,18 @@
         components: { CommonTemplate },
         data() {
             return {
+                type: 'finance',
                 tabList: [{
                     name: '人民网',
-                    link: 'hongguan',
+                    link: 'finance',
                     from: 'people'
                 }, {
                     name: '腾讯财经',
-                    link: 'industry',
+                    link: 'finance',
                     from: 'tencent'
                 }, {
                     name: '华尔街见闻',
-                    link: 'international',
+                    link: 'finance',
                     from: 'wallstreet'
                 }]
             };

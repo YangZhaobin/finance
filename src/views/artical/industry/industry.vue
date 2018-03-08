@@ -13,9 +13,10 @@
         components: { CommonTemplate },
         data() {
             return {
+                type: 'industry',
                 tabList: [{
                     name: '人民网',
-                    link: 'hongguan',
+                    link: 'industry',
                     from: 'people'
                 }, {
                     name: '腾讯财经',
@@ -23,7 +24,7 @@
                     from: 'tencent'
                 }, {
                     name: '华尔街见闻',
-                    link: 'international',
+                    link: 'industry',
                     from: 'wallstreet'
                 }]
             };

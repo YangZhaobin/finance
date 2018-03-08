@@ -12,7 +12,7 @@
                 </div>
                 <div class="finance-separate"></div>
                 <div class="detail-wrapper">
-                    <h3>基本信息</h3>
+                    <h3>文章名称</h3>
                     <div class="detail-content">
                         <ul class="detail-list">
                             <li class="detail-list__item">
@@ -24,12 +24,8 @@
                                 <span class="detail-list__item-content">设备名称</span>
                             </li>
                             <li class="detail-list__item">
-                                <span class="detail-list__item-label">挂载主机：</span>
-                                <span class="detail-list__item-content">挂载主机</span>
-                            </li>
-                            <li class="detail-list__item">
-                                <span class="detail-list__item-label">创建时间：</span>
-                                <span class="detail-list__item-content">创建时间</span>
+                                <span class="detail-list__item-label">文章内容：</span>
+                                <span class="detail-list__item-content">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</span>
                             </li>
                         </ul>
                     </div>

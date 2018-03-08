@@ -2,7 +2,7 @@
      <div class="header-block">
         <div class="logo-block">
             <a href="/" class="logo-link">
-                <img src="http://www.mtyun.com/media/img/console/logo.png" class="logo-image"/>
+                <img src="" class="logo-image"/>
             </a>
         </div>
     </div>

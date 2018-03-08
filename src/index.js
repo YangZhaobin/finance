@@ -11,7 +11,7 @@ import ElNav from './components/nav.vue';
 import App from './App.vue';
 
 import routes from './router/index';
-import axios from 'axios';
+import axios from './http';
 import '@css/base.less';
 
 Vue.prototype.axios = axios;
