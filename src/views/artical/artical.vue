@@ -62,7 +62,6 @@ export default {
                 this.artical.content = data.content;
             })
             .catch(() => {
-                this.table.tableData = [];
                 this.showErrorMessage('文章获取错误');
                 this.artical = {
                     id: '',

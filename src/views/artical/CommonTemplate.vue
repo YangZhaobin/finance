@@ -15,7 +15,7 @@
                 </div>
                 <div class="finance-separate"></div>
                 <artical-table
-                    :urlFormatter="articalUrlFormatter">    
+                    :type="type">    
                 </artical-table>  
             </div>
         </div>
@@ -33,10 +33,6 @@ export default {
         tabList: {
             type: Array,
             default: () => []
-        },
-        articalUrlFormatter: {
-            type: Function,
-            default: () => ''
         }
     },
     data() {
@@ -45,8 +41,7 @@ export default {
     },
     mounted() {
     },
-    method: {
-        articalUrlFormatter: this.articalUrlFormatter
+    methods: {
     }
 };
 </script>

@@ -65,7 +65,7 @@ const routes = [{
         name: 'international',
         component: International,
         meta: { nameCn: '国际', icon: 'el-icon-info', notShowNav: false }
-    },{
+    }, {
         path: 'content/:id?',
         name: 'content',
         component: ArticalContent,

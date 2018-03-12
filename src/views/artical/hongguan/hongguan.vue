@@ -2,31 +2,42 @@
     <div>
         <common-template
             :tabList="tabList"
-            :articalUrlFormatter="articalUrlFormatter">
+            :type="type">
         </common-template>
     </div>
 </template>
 <script>
     import CommonTemplate from '@/views/artical/CommonTemplate.vue';
-
     export default {
         components: { CommonTemplate },
         data() {
             return {
-                type: 'hongguan',
                 tabList: [{
+                    name: '新浪财经',
+                    link: 'hongguan',
+                    from: 'sina'
+                }, {
+                    name: '腾信财经',
+                    link: 'hongguan',
+                    from: 'tencent'
+                }, {
+                    name: '网易新闻',
+                    link: 'hongguan',
+                    from: 'netease'
+                }, {
                     name: '人民网',
                     link: 'hongguan',
                     from: 'people'
                 }, {
-                    name: '腾讯财经',
-                    link: 'hongguan',
-                    from: 'tencent'
-                }, {
                     name: '华尔街见闻',
                     link: 'hongguan',
                     from: 'wallstreet'
-                }]
+                }, {
+                    name: '中国财经信息网',
+                    link: 'hongguan',
+                    from: 'prcfe'
+                }],
+                type: 'hongguan'
             };
         },
         watch: {

@@ -15,19 +15,40 @@
             return {
                 type: 'finance',
                 tabList: [{
+                    name: '新浪财经',
+                    link: 'finance',
+                    from: 'sina'
+                }, {
+                    name: '腾信财经',
+                    link: 'finance',
+                    from: 'tencent'
+                }, {
+                    name: '网易新闻',
+                    link: 'finance',
+                    from: 'netease'
+                }, {
                     name: '人民网',
                     link: 'finance',
                     from: 'people'
                 }, {
-                    name: '腾讯财经',
-                    link: 'finance',
-                    from: 'tencent'
-                }, {
                     name: '华尔街见闻',
                     link: 'finance',
                     from: 'wallstreet'
+                }, {
+                    name: '中国财经信息网',
+                    link: 'finance',
+                    from: 'prcfe'
                 }]
             };
+        },
+        watch: {
+            '$route'(to, from) {
+                let f = to.params.from;
+                this.tabList = this.tabList.map(item => {
+                    item.isActive = (item.from === f);
+                    return item;
+                });
+            }
         },
         mounted() {
             let from = this.$route.params.from;

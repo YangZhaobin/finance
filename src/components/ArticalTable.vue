@@ -16,7 +16,7 @@
                 prop="title"
                 label="文章标题">
                 <template slot-scope="scope">
-                    <router-link :to="{ name: scope.row.link }">
+                    <router-link target="_blank" :to="{ name: 'content', params: { id: scope.row.id } }">
                         {{ scope.row.title }}
                     </router-link>
                 </template>
@@ -39,22 +39,20 @@
 </template>
 
 <script>
+const urlConfig = require('@/api/urlConfig');
 export default {
     name: 'ArticalTable',
     props: {
-        urlFormatter: {
-            type: Function,
-            default: () => ''
-        }
+        type: String
     },
     data() {
         return {
+            website: '',
             data: {
                 path: '',
                 from: this.$route.params.from,
                 NOTIFICATION_DURATION_TIME: 3000
             },
-
             page: {
                 pageSize: 10,
                 currentPage: 1
@@ -76,6 +74,10 @@ export default {
         }
     },
     mounted() {
+        if (!this.$route.params.from) {
+            this.$route.params.from = 'sina';
+        }
+        this.website = this.$route.params.from;
         this.getTableData();
     },
     methods: {
@@ -103,6 +105,7 @@ export default {
             }
         },
         getTableData() {
+            this.website = this.$route.params.from;
             this.table.tableLoading = true;
 
             if (!this.$route.query.page) {
@@ -110,54 +113,28 @@ export default {
             } else {
                 this.page.currentPage = parseInt(this.$route.query.page);
             }
-            // let params = {
-            //     limit: this.page.pageSize,
-            //     offset: (this.page.currentPage - 1) * this.page.pageSize
-            // };
-
-            this.table.tableData = [{
-                title: 'this is a title1',
-                link: 'industry'
-            }, {
-                title: 'this is a title2',
-                link: 'industry'
-            }, {
-                title: 'this is a title3',
-                link: 'industry'
-            }, {
-                title: 'this is a title4',
-                link: 'industry'
-            }, {
-                title: 'this is a title5',
-                link: 'industry'
-            }, {
-                title: 'this is a title6',
-                link: 'industry'
-            }, {
-                title: 'this is a title7',
-                link: 'industry'
-            }];
+            let params = {
+                site: this.website,
+                type: this.type,
+                limit: this.page.pageSize,
+                offset: (this.page.currentPage - 1) * this.page.pageSize
+            };
             this.table.tableLoading = false;
-            // this.axios.get(this.urlFormatter(), {
-            //     params: params
-            // })
-            // .then(data => data.data)
-            // .then(data => {
-            //     if (data.code === 200) {
-            //         this.table.tableDataCount = data.count || 0;
-            //         this.table.tableData = data.ret;
-            //     } else {
-            //         this.table.tableData = [];
-            //         this.showErrorMessage(data.err);
-            //     }
-            // })
-            // .catch(() => {
-            //     this.table.tableData = [];
-            //     this.showErrorMessage('磁盘快照数据获取错误');
-            // })
-            // .finally(() => {
-            //     this.table.tableLoading = false;
-            // });
+            this.axios.get(urlConfig.articalListBySite(), {
+                params: params
+            })
+            .then(data => data.data)
+            .then(data => {
+                this.table.tableDataCount = data.count || 0;
+                this.table.tableData = data.rows;
+            })
+            .catch(() => {
+                this.table.tableData = [];
+                this.showErrorMessage('磁盘快照数据获取错误');
+            })
+            .finally(() => {
+                this.table.tableLoading = false;
+            });
         },
 
         showErrorMessage(msg) {
