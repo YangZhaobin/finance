@@ -1,21 +1,25 @@
 
-const serverRoot = 'http://127.0.0.1:9050'
-
-export const banner = serverRoot + '/banner'
-
-export const ranking3 = serverRoot + '/ranking3'
+const serverRoot = 'http://127.0.0.1:3001'
 
 
-// 推广
-export const promote = serverRoot + '/promote'
 
-// 直播
-export const live = serverRoot + '/live'
+export const articalList = serverRoot + '/artical/list'
 
-// 具体内容
-export const contet = serverRoot + '/ding'
+export const articalListByType = (type) => {
+    return serverRoot + '/artical/type' + type;
+}
 
-// 三日排行
-export const contentrank = serverRoot + '/contentrank'
-// 一周排行
-export const contentrankweek = serverRoot + '/contentrankweek'
+export const articalListBySite = (web) => {
+    return serverRoot + '/artical/site' + type;
+}
+
+export const articalListByTitle = (title) => {
+    return serverRoot + '/artical/title' + title;
+}
+
+export const articalDetail = (id) => {
+    return serverRoot + '/artical/detail/' + id;
+}
+
+
+

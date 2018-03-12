@@ -6,26 +6,21 @@
                 <el-nav></el-nav>
             </div>
             <div class="product">
-                <div class="finance-tab">
-                    <span class="tab active">证券</span>
-                    <router-link class="tab" :to="{ name: 'job' }">股票</router-link>
-                </div>
-                <div class="finance-separate"></div>
-                <div class="detail-wrapper">
-                    <h3>文章名称</h3>
+                <div class="detail-wrapper" v-loading="artical.loading">
+                    <h3 class="title-content">{{ artical.title }}</h3>
                     <div class="detail-content">
                         <ul class="detail-list">
                             <li class="detail-list__item">
-                                <span class="detail-list__item-label">磁盘名：</span>
-                                <span class="detail-list__item-content">磁盘名</span>
+                                <span class="detail-list__item-label">时间：</span>
+                                <span class="detail-list__item-content">{{ artical.published_at }}</span>
                             </li>
                             <li class="detail-list__item">
-                                <span class="detail-list__item-label">设备名称：</span>
-                                <span class="detail-list__item-content">设备名称</span>
+                                <span class="detail-list__item-label">来源：</span>
+                                <span class="detail-list__item-content">{{ artical.from }}</span>
                             </li>
                             <li class="detail-list__item">
-                                <span class="detail-list__item-label">文章内容：</span>
-                                <span class="detail-list__item-content">巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</span>
+                                <span class="detail-list__item-label"></span>
+                                <span class="detail-list__item-content" v-html="artical.content"></span>
                             </li>
                         </ul>
                     </div>
@@ -37,16 +32,54 @@
 <script>
 require('@css/tab.less');
 require('@css/detail.less');
+const urlConfig = require('@/api/urlConfig');
 export default {
-    data: function() {
+    data() {
         return {
-            key: 'Hello World!!!!!'
+            artical: {
+                id: '',
+                loading: false,
+                title: '',
+                published_at: '',
+                from: '',
+                content: ''
+            }
         };
     },
     mounted() {
-        
+        this.artical.id = this.$route.params.id || 'AccsLrrwbEGtudfIowvg';
+        this.getArticalById(urlConfig.articalDetail(this.artical.id));
     },
-    method: {
+    methods: {
+        getArticalById(url) {
+            this.artical.loading = true;
+            this.axios.get(url)
+            .then(data => data.data)
+            .then(data => {
+                this.artical.title = data.title;
+                this.artical.published_at = data.published_at;
+                this.artical.from = data.from;
+                this.artical.content = data.content;
+            })
+            .catch(() => {
+                this.table.tableData = [];
+                this.showErrorMessage('文章获取错误');
+                this.artical = {
+                    id: '',
+                    loading: false,
+                    title: '',
+                    published_at: '',
+                    from: '',
+                    content: ''
+                };
+            })
+            .finally(() => {
+                this.artical.loading = false;
+            });
+        },
+        showErrorMessage(msg) {
+            this.$message.error(msg);
+        }
     }
 };
 </script>
