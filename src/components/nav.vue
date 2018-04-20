@@ -3,18 +3,23 @@
         <div class="nav-block__nav-title">
             {{navTitle}}
         </div>
-        <ul class="nav-block__nav-list">
-            <li class="nav-block__nav-item" v-for="item in routeList">
-                <a class="nav-block__link" v-if="item.meta.outlink" :href="item.meta.outlink" target="_blank">
-                    <i class="iconfont icon-kongzhitai-cedaohang-xuanzhongtiaoicon nav-background"></i>
-                    <i v-if="item.meta.icon" class="iconfont nav-icon" :class="item.meta.icon"></i>{{item.meta.nameCn}}
-                </a>
-                <router-link :to="to(item)" class="nav-block__link" v-else>
-                    <i class="iconfont icon-kongzhitai-cedaohang-xuanzhongtiaoicon nav-background"></i>
-                    <i v-if="item.meta.icon" class="iconfont nav-icon" :class="item.meta.icon"></i>{{item.meta.nameCn}}
-                </router-link>
-            </li>
-        </ul>
+        <div>
+            <ul class="nav-block__nav-list" v-for="routeItem in routeList" :key="routeItem.path">
+                <li class="nav-block__nav-subtitle">
+                    {{ routeItem.meta.nameCn }}
+                </li>
+                <li class="nav-block__nav-item" v-for="item in routeItem.children.filter(child => !child.meta.notShowNav)" :key="item.path">
+                    <a class="nav-block__link" v-if="item.meta.outlink" :href="item.meta.outlink" target="_blank">
+                        <i class="iconfont icon-kongzhitai-cedaohang-xuanzhongtiaoicon nav-background"></i>
+                        <i v-if="item.meta.icon" class="iconfont nav-icon" :class="item.meta.icon"></i>{{item.meta.nameCn}}
+                    </a>
+                    <router-link :to="to(item)" class="nav-block__link" v-else>
+                        <i class="iconfont icon-kongzhitai-cedaohang-xuanzhongtiaoicon nav-background"></i>
+                        <i v-if="item.meta.icon" class="iconfont nav-icon" :class="item.meta.icon"></i>{{item.meta.nameCn}}
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 <script>
@@ -40,19 +45,13 @@
         },
         mounted() {
             let route = this.$route;
+
+            this.routeList = routes.filter(item => item.showNav);
+
             if (route.matched && route.matched.length > 0) {
                 let {meta = {}} = route.matched[0];
                 this.navTitle = meta.nameCn;
                 document.title = meta.title;
-            }
-            if (route.matched && route.matched.length > 1) {
-                let parentRoute = route.matched[0];
-                let parent = routes.filter(item => item.path === parentRoute.path);
-                if (parent.length > 0) {
-                    let children = parent[0]['children'] || [];
-
-                    this.routeList = children.filter(item => !item.meta.notShowNav);
-                }
             }
         }
     };
@@ -75,8 +74,19 @@
 
             border-bottom: 1px solid #333C51;
         }
+        .nav-block__nav-subtitle{
+            height: 40px;
+
+            text-align: center;
+            font-size: 16px;
+            color:#90979e;
+            letter-spacing:0;
+            line-height: 40px;
+
+            border-bottom: 1px solid #333C51;
+        }
         .nav-block__nav-list{
-            padding-top: 10px;
+            border-bottom: 1px solid #333C51;
         }
         .nav-block__nav-item{
             height: 50px;

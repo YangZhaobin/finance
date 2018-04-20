@@ -10,10 +10,14 @@ export const articalListBySite = () => {
     return serverRoot + '/artical/list/site';
 };
 
-export const articalListByTitle = (title) => {
-    return serverRoot + '/artical/list/title' + title;
+export const articalListByTitle = () => {
+    return serverRoot + '/artical/list/title';
 };
 
 export const articalDetail = (id) => {
     return serverRoot + '/artical/detail/' + id;
+};
+
+export const hotArticalTags = () => {
+    return serverRoot + '/tags/list';
 };

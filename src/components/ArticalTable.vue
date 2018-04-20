@@ -25,7 +25,6 @@
         <div class="pagination-wrapper">
             <el-pagination
                 class="artical-pagination"
-                small
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
                 :current-page="page.currentPage"
@@ -75,7 +74,7 @@ export default {
     },
     mounted() {
         if (!this.$route.params.from) {
-            this.$route.params.from = 'sina';
+            this.$route.params.from = 'tencent';
         }
         this.website = this.$route.params.from;
         this.getTableData();
@@ -130,7 +129,7 @@ export default {
             })
             .catch(() => {
                 this.table.tableData = [];
-                this.showErrorMessage('磁盘快照数据获取错误');
+                this.showErrorMessage('文章数据获取错误');
             })
             .finally(() => {
                 this.table.tableLoading = false;

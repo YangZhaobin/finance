@@ -13,10 +13,6 @@
         data() {
             return {
                 tabList: [{
-                    name: '新浪财经',
-                    link: 'hongguan',
-                    from: 'sina'
-                }, {
                     name: '腾信财经',
                     link: 'hongguan',
                     from: 'tencent'

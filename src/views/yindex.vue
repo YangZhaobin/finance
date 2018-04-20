@@ -5,41 +5,8 @@
             <div class="nav">
                 <el-nav></el-nav>
             </div>
-            <li v-for="item in routeList" :key="item.id">
-                <i :class="errorClass[index]" @click="clickEvent(index)"></i>
-            </li>
             <div class="product">
-                <div class="finance-tab">
-                    <span class="tab active">宏观</span>
-                    <router-link class="tab" :to="{ name: 'finance' }">金融</router-link>
-                    <router-link class="tab" :to="{ name: 'industry' }">产业</router-link>
-                    <router-link class="tab" :to="{ name: 'comment' }">评论</router-link>
-                    <router-link class="tab" :to="{ name: 'international' }">国际</router-link>
-                </div>
-                <div class="finance-separate"></div>
-                <div class="detail-wrapper">
-                    <h3>基本信息</h3>
-                    <div class="detail-content">
-                        <ul class="detail-list">
-                            <li class="detail-list__item">
-                                <span class="detail-list__item-label">磁盘名：</span>
-                                <span class="detail-list__item-content">磁盘名</span>
-                            </li>
-                            <li class="detail-list__item">
-                                <span class="detail-list__item-label">设备名称：</span>
-                                <span class="detail-list__item-content">设备名称</span>
-                            </li>
-                            <li class="detail-list__item">
-                                <span class="detail-list__item-label">挂载主机：</span>
-                                <span class="detail-list__item-content">挂载主机</span>
-                            </li>
-                            <li class="detail-list__item">
-                                <span class="detail-list__item-label">创建时间：</span>
-                                <span class="detail-list__item-content">创建时间</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <div id="test"></div>
             </div>
         </div>
     </div>
@@ -47,27 +14,76 @@
 <script>
     require('@css/tab.less');
     require('@css/detail.less');
+    const echarts = require('echarts');
     export default {
         data: function() {
             return {
-                key: 'Hello World!!!!!',
-
-                errorClass: []  // 打错的时候给errorClass赋值
+                option: {
+                    tooltip: {
+                        show: true,
+                        trigger: 'item'
+                    },
+                    grid: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    },
+                    xAxis: {
+                        show: false,
+                        type: 'category',
+                        boundaryGap: false
+                    },
+                    yAxis: {
+                        show: false,
+                        scale: true,
+                        type: 'value'
+                    },
+                    series: [{
+                        data: [
+                            90.3032,
+                            90.2946,
+                            90.2971,
+                            90.2968,
+                            90.3016,
+                            90.2996,
+                            90.3149,
+                            90.3124,
+                            90.3116,
+                            90.3151
+                        ],
+                        type: 'line',
+                        itemStyle: {
+                            normal: {
+                                color: 'rgba(64, 158, 255, 0.5)',
+                                lineStyle: {
+                                    color: 'rgba(64, 158, 255, 0.5)'
+                                }
+                            }
+                        },
+                        areaStyle: {
+                            color: 'rgba(64, 158, 255, 0.3)'
+                        }
+                    }]
+                }
             };
         },
         mounted() {
-
+            this.test();
         },
-        method: {
-            clickEvent(evt, index) {
-                // 答错了
-                if (false) { 
-                    this.errorClass[index] = 'error';
-                }
+        methods: {
+            test() {
+                let test = document.getElementById('test');
+                let chart = echarts.init(test);
+                let option = this.option;
+                chart.setOption(option);
             }
         }
     };
 </script>
-<style lang="less" scoped>
-
+<style lang="less">
+    #test {
+        height: 400px;
+        width: 600px;
+    }
 </style>
