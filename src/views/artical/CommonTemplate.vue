@@ -15,6 +15,7 @@
                 </div>
                 <div class="finance-separate"></div>
                 <artical-table
+                    :tabList="tabList"
                     :type="type">    
                 </artical-table>  
             </div>

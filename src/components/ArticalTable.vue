@@ -42,7 +42,11 @@ const urlConfig = require('@/api/urlConfig');
 export default {
     name: 'ArticalTable',
     props: {
-        type: String
+        type: String,
+        tabList: {
+            type: Array,
+            default: () => []
+        }
     },
     data() {
         return {
@@ -74,7 +78,7 @@ export default {
     },
     mounted() {
         if (!this.$route.params.from) {
-            this.$route.params.from = 'tencent';
+            this.$route.params.from = this.tabList[0]['from'];
         }
         this.website = this.$route.params.from;
         this.getTableData();

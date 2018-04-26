@@ -23,6 +23,15 @@
                         show: true,
                         trigger: 'item'
                     },
+                    legend: {
+                        data: [
+                            '1H',
+                            '4H',
+                            '1D',
+                            '1W',
+                            '1M'
+                        ]
+                    },
                     grid: {
                         left: 0,
                         right: 0,
@@ -40,6 +49,7 @@
                         type: 'value'
                     },
                     series: [{
+                        name: '4H',
                         data: [
                             90.3032,
                             90.2946,

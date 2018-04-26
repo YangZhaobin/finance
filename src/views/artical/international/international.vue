@@ -2,7 +2,7 @@
     <div>
         <common-template
             :tabList="tabList"
-            :articalUrlFormatter="articalUrlFormatter">
+            :type="type">
         </common-template>
     </div>
 </template>
@@ -15,14 +15,6 @@
             return {
                 type: 'international',
                 tabList: [{
-                    name: '新浪财经',
-                    link: 'international',
-                    from: 'sina'
-                }, {
-                    name: '腾信财经',
-                    link: 'international',
-                    from: 'tencent'
-                }, {
                     name: '网易新闻',
                     link: 'international',
                     from: 'netease'
@@ -35,9 +27,9 @@
                     link: 'international',
                     from: 'wallstreet'
                 }, {
-                    name: '中国财经信息网',
+                    name: '同花顺财经',
                     link: 'international',
-                    from: 'prcfe'
+                    from: 'new10jqka'
                 }]
             };
         },

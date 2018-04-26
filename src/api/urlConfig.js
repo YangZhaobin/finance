@@ -1,4 +1,5 @@
 const serverRoot = 'http://127.0.0.1:3001';
+// const serverRoot = 'http://47.94.1.113';
 
 export const articalList = serverRoot + '/artical/list';
 

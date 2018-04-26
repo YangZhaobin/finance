@@ -25,13 +25,13 @@
                     link: 'hongguan',
                     from: 'people'
                 }, {
-                    name: '华尔街见闻',
-                    link: 'hongguan',
-                    from: 'wallstreet'
-                }, {
                     name: '中国财经信息网',
                     link: 'hongguan',
                     from: 'prcfe'
+                }, {
+                    name: '同花顺财经',
+                    link: 'hongguan',
+                    from: 'new10jqka'
                 }],
                 type: 'hongguan'
             };
