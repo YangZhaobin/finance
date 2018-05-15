@@ -60,7 +60,6 @@ export default {
                 pageSize: 10,
                 currentPage: 1
             },
-
             table: {
                 tableLoading: false,
                 tableData: [],
@@ -69,7 +68,17 @@ export default {
         };
     },
     watch: {
-        '$route': 'getTableData'
+        '$route': 'getTableData',
+        tabList: function (list) {
+            if (list.length <= 0) {
+                return;
+            }
+            if (!this.$route.params.from) {
+                this.$route.params.from = this.tabList[0]['from'];
+            }
+            this.website = this.$route.params.from;
+            this.getTableData();
+        }
     },
     computed: {
         isEmptyTable() {
@@ -77,6 +86,9 @@ export default {
         }
     },
     mounted() {
+        if (this.tabList.length <= 0) {
+            return;
+        }
         if (!this.$route.params.from) {
             this.$route.params.from = this.tabList[0]['from'];
         }

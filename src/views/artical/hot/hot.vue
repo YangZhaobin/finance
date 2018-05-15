@@ -6,11 +6,30 @@
                 <el-nav></el-nav>
             </div>
             <div class="product">
-                <div class="finance-tab">
+                <div class="finance-tab withpage">
+                    <span
+                        class="tab-prev"
+                        :class="{'disabled' : tab.curTabPage <= 1}"
+                        @click="getAllTags(1)">
+                        <i class="el-icon-arrow-left"></i>
+                    </span>
                     <span v-for="tab in tabList"
                             :key="tab.name">
                         <span v-if="tab.isActive" class="tab active">{{ tab.word }}</span>
                         <router-link v-else class="tab" :to="{ name: tab.link, query: { word: tab.word }}">{{ tab.word }}</router-link>
+                    </span>
+                    <el-input placeholder="请输入关键词" v-model="searchWord" class="input-with-search">
+                        <el-button 
+                            slot="append"
+                            @click="searchWordArticle"
+                            icon="el-icon-search">
+                        </el-button>
+                    </el-input>
+                    <span 
+                        class="tab-next"
+                        :class="{'disabled' : tab.curTabPage >= tab.tabPages}"
+                        @click="getAllTags(2)">
+                        <i class="el-icon-arrow-right"></i>
                     </span>
                 </div>
                 <div class="finance-separate"></div>
@@ -72,6 +91,13 @@ export default {
         return {
             type: 'hot',
             tabList: [],
+            searchWord: '',
+            tab: {
+                curTabPage: 1,
+                tabPageSize: 5,
+                tabPages: 0,
+                tabCount: 0
+            },
             data: {
                 path: 'hot',
                 word: this.$route.query.tag,
@@ -89,6 +115,15 @@ export default {
             loading: false
         };
     },
+    mounted() {
+        this.getAllTags();
+
+        let word = this.$route.query.word;
+        this.tabList = this.tabList.map(item => {
+            item.isActive = (item.word === word);
+            return item;
+        });
+    },
     watch: {
         '$route'(to, from) {
             let word = to.query.word;
@@ -99,15 +134,6 @@ export default {
             this.getTableData();
         }
     },
-    mounted() {
-        this.getAllTags();
-
-        let word = this.$route.query.word;
-        this.tabList = this.tabList.map(item => {
-            item.isActive = (item.word === word);
-            return item;
-        });
-    },
     methods: {
         handleSizeChange(val) {
             this.page.pageSize = val;
@@ -116,11 +142,42 @@ export default {
         handleCurrentChange(val) {
             this.page.currentPage = val;
         },
-        getAllTags() {
-            this.axios.get(urlConfig.hotArticalTags())
+        searchWordArticle() {
+            let word = this.searchWord;
+            if (!word.trim()) {
+                this.showWarningNotify('请输入关键词');
+                return;
+            }
+            this.$router.push({
+                name: this.data.path,
+                query: {
+                    word
+                }
+            });
+            this.tabList = this.tabList.map(item => {
+                item.isActive = (item.word === word);
+                return item;
+            });
+            this.getTableData();
+        },
+        getAllTags(flag) {
+            if (flag === 1) {
+                this.tab.curTabPage--;
+            } else if (flag === 2) {
+                this.tab.curTabPage++;
+            }
+            let params = {
+                limit: this.tab.tabPageSize,
+                offset: (this.tab.curTabPage - 1) * this.tab.tabPageSize
+            };
+            this.axios.get(urlConfig.hotArticalTagsWithPage(), {
+                params: params
+            })
                 .then(data => data.data)
                 .then(data => {
-                    this.tabList = data;
+                    this.tabList = data.rows;
+                    this.tab.tabCount = data.count;
+                    this.tab.tabPages = Math.ceil(data.count / this.tab.tabPageSize);
                     let word = this.tabList[0].word;
                     this.$router.push({
                         name: this.data.path,
@@ -187,11 +244,18 @@ export default {
                 type: 'error'
             });
         },
+        showWarningNotify(msg) {
+            this.$notify({
+                title: msg,
+                type: 'warning',
+                duration: this.data.NOTIFICATION_DURATION_TIME
+            });
+        },
         showSuccessNotify(msg) {
             this.$notify({
                 title: msg,
                 type: 'success',
-                duration: this.NOTIFICATION_DURATION_TIME
+                duration: this.data.NOTIFICATION_DURATION_TIME
             });
         }
     }
@@ -206,5 +270,11 @@ export default {
         & > .artical-pagination {
             display: inline-block;
         }
+    }
+    .input-with-search {
+        position: absolute;
+        right: 30px;
+        bottom: 0;
+        width: 300px;
     }
 </style>

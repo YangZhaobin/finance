@@ -123,7 +123,7 @@
     export default {
         data: function() {
             return {
-                type: 'indice',
+                type: 'cfdindice',
                 url: 'http://forexdata.wallstreetcn.com/real_list',
                 fields: [
                     'prod_name',
@@ -392,6 +392,7 @@
             color: #3cbc98;
         }
         .time-list {
+            width: 30px;
             li {
                 text-align: center;
                 margin-bottom: 3px;

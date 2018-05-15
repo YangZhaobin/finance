@@ -22,3 +22,15 @@ export const articalDetail = (id) => {
 export const hotArticalTags = () => {
     return serverRoot + '/tags/list';
 };
+
+export const websiteInfos = () => {
+    return serverRoot + '/website';
+};
+
+export const websiteTags = () => {
+    return serverRoot + '/artical/weblist/type';
+};
+
+export const hotArticalTagsWithPage = () => {
+    return serverRoot + '/tags/list_page';
+};

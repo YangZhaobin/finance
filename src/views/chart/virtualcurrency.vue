@@ -392,6 +392,7 @@
             color: #3cbc98;
         }
         .time-list {
+            width: 30px;
             li {
                 text-align: center;
                 margin-bottom: 3px;

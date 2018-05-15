@@ -242,13 +242,13 @@
                 this.interval.intervalList.push(intervalId);
             },
             getTableData() {
-                let params = {
+                let params = {  // 设置get请求参数
                     fields: this.fields.join(','),
                     type: this.type,
                     page: this.page.currentPage,
                     limit: this.page.pageSize
                 };
-                this.axios.get(this.url, {
+                this.axios.get(this.url, {  // 发送get请求获取数据
                     params: params
                 })
                 .then(data => data.data)
@@ -393,6 +393,7 @@
             color: #3cbc98;
         }
         .time-list {
+            width: 30px;
             li {
                 text-align: center;
                 margin-bottom: 3px;

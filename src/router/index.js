@@ -79,7 +79,7 @@ const routes = [{
     showNav: true,
     component: commonParent,
     redirect: '/chart/forex',
-    meta: { title: '财经信息收集系统', nameCn: '财经信息' },
+    meta: { title: '财经信息收集系统', nameCn: '行情数据' },
     children: [{
         path: 'forex',
         name: 'chart-forex',
@@ -89,7 +89,7 @@ const routes = [{
         path: 'indice',
         name: 'chart-indice',
         component: ChartIndice,
-        meta: { nameCn: '股指', icon: 'el-icon-date', notShowNav: false }
+        meta: { nameCn: '股指期货', icon: 'el-icon-date', notShowNav: false }
     }, {
         path: 'bond',
         name: 'chart-bond',
@@ -107,7 +107,7 @@ const routes = [{
     showNav: true,
     component: commonParent,
     redirect: '/artical/finance/people',
-    meta: { title: '财经信息收集系统', nameCn: '财经新闻' },
+    meta: { title: '财经信息收集系统', nameCn: '资讯新闻' },
     children: [{
         path: 'hot',
         name: 'hot',

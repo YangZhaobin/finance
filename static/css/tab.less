@@ -1,4 +1,29 @@
 .finance-tab {
+    position: relative;
+    &.withpage {
+        padding: 0 30px;
+    }
+    .tab-next,
+    .tab-prev {
+        position: absolute;
+        bottom: 5px;
+        cursor: pointer;
+        i {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .disabled {
+            pointer-events: none;
+
+            color: #8391a5;
+        }
+    }
+    .tab-prev {
+        left: 0;
+    }
+    .tab-next {
+        right: 0;
+    }
     .tab {
         box-sizing: border-box;
 
@@ -7,6 +32,7 @@
         margin-top: 15px;
         margin-left: 15px;
         height: 32px;
+        min-width: 100px;
         
         line-height: 32px;
         font-size: 14px;
