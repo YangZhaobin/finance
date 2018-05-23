@@ -8,6 +8,7 @@
             <div class="product">
                 <div>
                     <el-table
+                        max-height="600"
                         v-loading="loading"
                         element-loading-text="拼命加载中"
                         show-overflow-tooltip
@@ -118,7 +119,6 @@
     </div>
 </template>
 <script>
-    const Vue = require('vue');
     const echarts = require('echarts');
     const _ = require('lodash');
     export default {
@@ -142,7 +142,7 @@
                 ],
                 interval: {
                     intervalList: [],
-                    INTERVAL_TIME: 5000
+                    INTERVAL_TIME: 2000
                 },
                 page: {
                     currentPage: 1,
@@ -170,8 +170,7 @@
                     maxDataLength: 50,
                     option: {
                         tooltip: {
-                            show: true,
-                            trigger: 'item'
+                            trigger: 'axis'
                         },
                         grid: {
                             left: 0,
@@ -375,6 +374,8 @@
 <style lang="less">
     .pagination-wrapper {
         margin-top: 20px;
+        margin-bottom: 15px;
+        
 
         text-align: center;
 
@@ -383,6 +384,7 @@
         }
     }
     .chart-table.el-table {
+        margin-top: 15px;
         .el-table__row td {
             height: 130px !important;
         }

@@ -1,6 +1,7 @@
 <template>
     <div>
         <el-table
+            max-height="650"
             v-loading="table.tableLoading"
             element-loading-text="拼命加载中"
             show-overflow-tooltip
@@ -19,6 +20,16 @@
                     <router-link target="_blank" :to="{ name: 'content', params: { id: scope.row.id } }">
                         {{ scope.row.title }}
                     </router-link>
+                </template>
+            </el-table-column>
+            <el-table-column
+                prop="time"
+                width="200px"
+                label="时间">
+                 <template slot-scope="scope">
+                    <span>
+                        {{ scope.row.time }}
+                    </span>
                 </template>
             </el-table-column>
         </el-table>
@@ -69,7 +80,7 @@ export default {
     },
     watch: {
         '$route': 'getTableData',
-        tabList: function (list) {
+        tabList(list) {
             if (list.length <= 0) {
                 return;
             }

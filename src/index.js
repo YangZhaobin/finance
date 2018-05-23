@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueLazyload from 'vue-lazyload';
-
+import store from './vuex/store';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -26,8 +26,11 @@ const router = new VueRouter({
     routes
 });
 
+store.dispatch('getUserInfo');
+
 new Vue({
     el: '#app',
     router,
+    store,
     render: h => h(App)
 });

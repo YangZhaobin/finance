@@ -45,12 +45,13 @@
         },
         mounted() {
             let route = this.$route;
+            this.navTitle = '财经信息';
 
             this.routeList = routes.filter(item => item.showNav);
 
             if (route.matched && route.matched.length > 0) {
                 let {meta = {}} = route.matched[0];
-                this.navTitle = meta.nameCn;
+                // this.navTitle = meta.nameCn;
                 document.title = meta.title;
             }
         }

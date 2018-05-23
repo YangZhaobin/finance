@@ -36,6 +36,7 @@
 
                 <div>
                     <el-table
+                        max-height="650"
                         v-loading="loading"
                         element-loading-text="拼命加载中"
                         show-overflow-tooltip
@@ -61,7 +62,7 @@
                             width="200"
                             label="文章来源">
                             <template slot-scope="scope">
-                                {{ scope.row.Website.name }}
+                                {{ scope.row.Website.description }}
                             </template>
                         </el-table-column>
                     </el-table>

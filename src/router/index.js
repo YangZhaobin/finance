@@ -6,6 +6,12 @@ const Test = resolve => {
     });
 };
 
+const Collection = resolve => {
+    require.ensure(['@/views/artical/collection/collection.vue'], () => {
+        resolve(require('@/views/artical/collection/collection.vue'));
+    });
+};
+
 const Hot = resolve => {
     require.ensure(['@/views/artical/hot/hot.vue'], () => {
         resolve(require('@/views/artical/hot/hot.vue'));
@@ -144,6 +150,11 @@ const routes = [{
     name: 'test',
     component: Test,
     meta: { nameCn: '宏观', icon: 'el-icon-document', notShowNav: true }
+}, {
+    path: '/collection',
+    name: 'collection',
+    component: Collection,
+    meta: { nameCn: '收藏', icon: 'el-icon-document', notShowNav: true }
 }, {
     path: '*',
     component: resolve => {

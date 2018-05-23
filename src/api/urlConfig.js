@@ -23,6 +23,34 @@ export const hotArticalTags = () => {
     return serverRoot + '/tags/list';
 };
 
+export const userLogin = () => {
+    return serverRoot + '/user/login';
+};
+
+export const userCheck = () => {
+    return serverRoot + '/user/get';
+};
+
+export const userUpdate = () => {
+    return serverRoot + '/user/update';
+};
+
+export const userSignup = () => {
+    return serverRoot + '/user/add';
+};
+
+export const userCollectionList = () => {
+    return serverRoot + '/user/collection';
+};
+
+export const userCollectionAdd = () => {
+    return serverRoot + '/user/collection/add';
+};
+
+export const userCollectionDelete = () => {
+    return serverRoot + '/user/collection/delete';
+};
+
 export const websiteInfos = () => {
     return serverRoot + '/website';
 };
