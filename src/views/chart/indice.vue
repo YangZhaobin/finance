@@ -170,8 +170,8 @@
                     maxDataLength: 50,
                     option: {
                         tooltip: {
-                            show: true,
-                            trigger: 'item'
+                            trigger: 'axis',
+                            formatter: ' {c} '
                         },
                         grid: {
                             left: 0,
@@ -182,7 +182,8 @@
                         xAxis: {
                             show: false,
                             type: 'category',
-                            boundaryGap: false
+                            boundaryGap: false,
+                            data: []
                         },
                         yAxis: {
                             scale: true,
@@ -219,6 +220,9 @@
             };
         },
         mounted() {
+            for (let i = 0; i <  this.chart.maxDataLength; i++) {
+                this.chart.option.xAxis.data.push('');
+            }
             this.getTableData();
             let intervalId = this.pollData();
             this.interval.intervalList.push(intervalId);

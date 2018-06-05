@@ -53,6 +53,8 @@
                 let {meta = {}} = route.matched[0];
                 // this.navTitle = meta.nameCn;
                 document.title = meta.title;
+            } else {
+                document.title = '财经信息';
             }
         }
     };

@@ -19,62 +19,44 @@
         data: function() {
             return {
                 option: {
+                    title: {
+                        text: '折线图堆叠'
+                    },
                     tooltip: {
-                        show: true,
-                        trigger: 'item'
+                        trigger: 'axis'
                     },
                     legend: {
-                        data: [
-                            '1H',
-                            '4H',
-                            '1D',
-                            '1W',
-                            '1M'
-                        ]
+                        data:['邮件营销']
                     },
                     grid: {
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        bottom: 0
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    toolbox: {
+                        // feature: {
+                        //     saveAsImage: {}
+                        // }
                     },
                     xAxis: {
                         show: false,
                         type: 'category',
-                        boundaryGap: false
+                        boundaryGap: false,
+                        data: ['','','','','','','']
                     },
                     yAxis: {
                         show: false,
-                        scale: true,
                         type: 'value'
                     },
-                    series: [{
-                        name: '4H',
-                        data: [
-                            90.3032,
-                            90.2946,
-                            90.2971,
-                            90.2968,
-                            90.3016,
-                            90.2996,
-                            90.3149,
-                            90.3124,
-                            90.3116,
-                            90.3151
-                        ],
-                        type: 'line',
-                        itemStyle: {
-                            normal: {
-                                color: 'rgba(64, 158, 255, 0.5)',
-                                lineStyle: {
-                                    color: 'rgba(64, 158, 255, 0.5)'
-                                }
-                            }
-                        },
-                        areaStyle: {
-                            color: 'rgba(64, 158, 255, 0.3)'
+                    series: [
+                        {
+                            name:'邮件营销',
+                            type:'line',
+                            stack: '总量',
+                            data:[120, 132, 101, 134, 90, 230, 210]
                         }
-                    }]
+                    ]
                 }
             };
         },
